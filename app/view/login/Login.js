@@ -34,8 +34,6 @@ Ext.define("tt-AG.view.login.Login", {
                     if (form.isValid()) {
                         var values = form.getValues();
                         if (values.user === 'admin' && values.pass === 'padmin') {
-                            // Ext.Msg.alert('Успех', 'Вы успешно вошли!');
-                            // Ext.create('MyApp.view.ProtectedPage');
                             this.up('window').close();
                             Ext.create("tt-AG.view.main.Main").show();
                         } else {

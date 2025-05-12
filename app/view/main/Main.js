@@ -2,9 +2,8 @@ Ext.define("tt-AG.view.main.Main", {
     extend: 'Ext.window.Window',
     xtype: 'main',
     requires: [
-        // 'Ext.form.Panel',
         'Ext.tab.Panel',
-        'tt-AG.view.itemTab.ItemTab'
+        "tt-AG.store.Store",
     ],
     title: 'Учёт товаров',
     width: '75%',
@@ -18,8 +17,21 @@ Ext.define("tt-AG.view.main.Main", {
                     text: 'Товары',
                     scale: 'medium',
                     handler: function () {
-                        Ext.Msg.alert('Новая вкладка', 'Открыта новая вкладка товаров');
-                        // this.up('window').down('')
+                        const TabPanel = this.up('window').down('tabpanel');
+                        let itemPanel = this.up('window').down('itemPanel');
+                        if (itemPanel) {
+                            itemPanel.close();
+                            this.up('window').add({
+                                xtype: 'itemPanel',
+                            });
+                        } else {
+                            this.up('window').add({
+                                xtype: 'itemPanel',
+                            });
+                        }
+                        TabPanel.add({
+                            title: "Товары",
+                        });
                     }
                 },
                 {
@@ -32,24 +44,16 @@ Ext.define("tt-AG.view.main.Main", {
                 }
             ]
         },
-        // {
-        //     // xtype: 'tabpanel',
-        //     // extend: 'Ext.tab.Panel',
-        //     xtype: 'basic-tabs',
-        //     defaults: {
-        //         bodyPadding: 10,
-        //         scrollable: true
-        //     },
-        //     tabBar: {
-        //         layout: {
-        //             pack: 'center'
-        //         }
-        //     },
-        //     items: [
-        //         {
-        //             text: 'Товары'
-        //         }
-        //     ]
-        // }
+        {
+            xtype: 'tabpanel',
+            defaults: {
+                scrollable: true,
+            },
+            tabBar: {
+                layout: {
+                    pack: 'left'
+                }
+            },
+        },
     ]
 })
