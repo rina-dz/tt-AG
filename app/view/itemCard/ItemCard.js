@@ -5,6 +5,7 @@ Ext.define("tt-AG.view.itemCard.ItemCard", {
     width: '35%',
     height: '35%',
     modal: true,
+    renderTo: Ext.getBody(),
 
     items: [
         {
@@ -13,6 +14,7 @@ Ext.define("tt-AG.view.itemCard.ItemCard", {
             defaults: {
                 allowBlank: false,
             },
+
             items: [
                 {
                     xtype: "displayfield",
@@ -27,6 +29,7 @@ Ext.define("tt-AG.view.itemCard.ItemCard", {
                 {
                     xtype: "numberfield",
                     allowBlank: false,
+                    hideTrigger: true,
                     name: "price",
                     fieldLabel: "Цена",
                     step: 0.1,
@@ -35,6 +38,7 @@ Ext.define("tt-AG.view.itemCard.ItemCard", {
                 {
                     xtype: "numberfield",
                     allowBlank: false,
+                    hideTrigger: true,
                     name: "amt",
                     fieldLabel: "Кол-во",
                     minValue: 0

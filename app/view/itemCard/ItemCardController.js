@@ -6,6 +6,19 @@ Ext.define("tt-AG.view.itemCard.ItemCardController", {
             "itemPanel grid": {
                 cellclick: this.openItemCard,
             },
+            // "numberfield": {
+            //     change: function (target) {
+            //         // Ext.Msg.alert('Внимание!', 'Имеются изменённые данные');
+            //         const button = target.up('itemCard').down('button');
+            //         // console.log(button);
+            //         button.enable();
+            //         // button.forEach(b => b.setDisabled(false));
+            //         // Ext.getCmp('button[action=changeItem]').disable();
+            //         // const Button = this.up("itemCard").down('button');
+            //         // Button.setDisabled(false);
+            //         // Button.enable();
+            //     }
+            // },
             "button[action=changeItem]": {
                 click: this.changeItem,
             },
@@ -29,7 +42,7 @@ Ext.define("tt-AG.view.itemCard.ItemCardController", {
         const Record = Form.getRecord();
         const Values = Form.getValues();
         if (Form.isDirty()) {
-            Ext.Msg.alert('Внимание!', 'Имеются изменённые данные');
+            Ext.Msg.alert('Изменения', 'Имеются изменённые данные');
             Record.set(Values);
         }
         button.up("window").close();

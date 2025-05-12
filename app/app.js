@@ -13,7 +13,6 @@ Ext.application({
         "tt-AG.view.itemCard.ItemCardController",
     ],
     launch: function () {
-        Ext.create("tt-AG.view.main.Main").show();
-        // Ext.create("tt-AG.view.itemCard.ItemCard").show();
+        Ext.create("tt-AG.view.login.Login").show();
     },
 });
