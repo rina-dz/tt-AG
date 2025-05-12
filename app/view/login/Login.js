@@ -1,11 +1,7 @@
 Ext.define("tt-AG.view.login.Login", {
     extend: 'Ext.window.Window',
     xtype: 'login',
-    requires: ['Ext.form.Panel',
-        // 'tt-AG.view.login.LoginController'
-    ],
     title: 'Авторизация',
-
 
     items: {
         xtype: 'form',
@@ -29,24 +25,12 @@ Ext.define("tt-AG.view.login.Login", {
             {
                 text: 'Войти',
                 formBind: true,
-                handler: function () {
-                    var form = this.up('form').getForm();
-                    if (form.isValid()) {
-                        var values = form.getValues();
-                        if (values.user === 'admin' && values.pass === 'padmin') {
-                            this.up('window').close();
-                            Ext.create("tt-AG.view.main.Main").show();
-                        } else {
-                            Ext.Msg.alert('Ошибка', 'Неверные учетные данные.');
-                        }
-                    }
-                }
+                action: 'logIn',
             }
         ],
 
         defaults: {
             anchor: '100%',
-            labelWidth: 120
         }
     }
 });

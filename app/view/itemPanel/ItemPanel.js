@@ -16,12 +16,14 @@ Ext.define('tt-AG.view.itemPanel.ItemPanel', {
                     xtype: "textfield",
                     fieldLabel: "ID",
                     allowDecimals: false,
+                    emptyText: 'Введите фильтр',
                     itemId: "idFilter",
                 },
                 {
                     xtype: "textfield",
                     fieldLabel: "Описание",
-                    itemId: "descriptionFilter",
+                    emptyText: 'Введите фильтр',
+                    itemId: "descFilter",
                 },
             ],
         },
@@ -32,14 +34,7 @@ Ext.define('tt-AG.view.itemPanel.ItemPanel', {
             },
             columns: [
                 { text: "ID", dataIndex: "id" },
-                {
-                    text: "Имя", dataIndex: "name", flex: 1,
-                    // listeners: {
-                    //     itemclick: function() {
-                    //         Ext.Msg.alert('Ошибка', 'Неверные учетные данные.');
-                    //     }
-                    // }
-                },
+                { text: "Имя", dataIndex: "name", flex: 1, },
                 { text: "Описание", dataIndex: "description", flex: 3 },
                 { text: "Цена", dataIndex: "price", },
                 {

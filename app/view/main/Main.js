@@ -16,31 +16,12 @@ Ext.define("tt-AG.view.main.Main", {
                 {
                     text: 'Товары',
                     scale: 'medium',
-                    handler: function () {
-                        const TabPanel = this.up('window').down('tabpanel');
-                        let itemPanel = this.up('window').down('itemPanel');
-                        if (itemPanel) {
-                            itemPanel.close();
-                            this.up('window').add({
-                                xtype: 'itemPanel',
-                            });
-                        } else {
-                            this.up('window').add({
-                                xtype: 'itemPanel',
-                            });
-                        }
-                        TabPanel.add({
-                            title: "Товары",
-                        });
-                    }
+                    action: 'showItems',
                 },
                 {
                     text: 'Выйти',
                     scale: 'medium',
-                    handler: function () {
-                        this.up('window').close();
-                        Ext.create("tt-AG.view.login.Login").show();
-                    }
+                    action: 'logOut',
                 }
             ]
         },
