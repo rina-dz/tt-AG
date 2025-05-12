@@ -1,24 +1,15 @@
 Ext.define("tt-AG.view.itemCard.ItemCardController", {
     extend: "Ext.app.Controller",
 
+    config: {
+        fieldsValues: null,
+    },
+
     init: function () {
         this.control({
             "itemPanel grid": {
                 cellclick: this.openItemCard,
             },
-            // "numberfield": {
-            //     change: function (target) {
-            //         // Ext.Msg.alert('Внимание!', 'Имеются изменённые данные');
-            //         const button = target.up('itemCard').down('button');
-            //         // console.log(button);
-            //         button.enable();
-            //         // button.forEach(b => b.setDisabled(false));
-            //         // Ext.getCmp('button[action=changeItem]').disable();
-            //         // const Button = this.up("itemCard").down('button');
-            //         // Button.setDisabled(false);
-            //         // Button.enable();
-            //     }
-            // },
             "button[action=changeItem]": {
                 click: this.changeItem,
             },
@@ -32,6 +23,7 @@ Ext.define("tt-AG.view.itemCard.ItemCardController", {
         if (cellIndex === 1) {
             const formWindow = Ext.create("tt-AG.view.itemCard.ItemCard");
             formWindow.down("form").loadRecord(record);
+            this.fieldsValues = { amt: record.data.amt, price: record.data.price };
             formWindow.show();
             formWindow.down("form").trackResetOnLoad(true);
         }
@@ -41,9 +33,9 @@ Ext.define("tt-AG.view.itemCard.ItemCardController", {
         const Form = button.up("window").down("form");
         const Record = Form.getRecord();
         const Values = Form.getValues();
-        if (Form.isDirty()) {
+        Record.set(Values);
+        if (this.fieldsValues.amt !== Number(Values.amt) || this.fieldsValues.price !== Number(Values.price)) {
             Ext.Msg.alert('Изменения', 'Имеются изменённые данные');
-            Record.set(Values);
         }
         button.up("window").close();
     },

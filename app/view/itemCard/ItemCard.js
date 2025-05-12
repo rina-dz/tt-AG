@@ -48,7 +48,6 @@ Ext.define("tt-AG.view.itemCard.ItemCard", {
                 {
                     text: "Сохранить",
                     formBind: true,
-                    disabled: true,
                     action: "changeItem"
                 },
                 {
